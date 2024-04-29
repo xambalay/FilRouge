@@ -1,3 +1,3 @@
 <?php
-  echo "Khadidiatou diallo apprenants ODC"
+  echo "Bonjour khadidiatou diallo"
 ?>
