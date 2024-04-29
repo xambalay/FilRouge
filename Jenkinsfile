@@ -3,6 +3,7 @@ pipeline {
 
     stages {
         stage('Build') {
+            
             steps {
                 // Étape de construction de l'image Docker
                 script {
