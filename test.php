@@ -1,3 +1,3 @@
 <?php
-  echo "Bonjour Khadidiatou diallo future développeuse fullstack"
+  echo "Khadidiatou diallo apprenants ODC"
 ?>
