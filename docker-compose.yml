@@ -75,5 +75,5 @@ services:
         - "9000:9000"
       environment:
          SONARQUBE_JDBC_URL: jdbc:mysql://db:3306/sonar
-         SONARQUBE_JDBC_USERNAME: sonar
-         SONARQUBE_JDBC_PASSWORD: sona
+         SONARQUBE_JDBC_USERNAME: root
+         SONARQUBE_JDBC_PASSWORD: pass
