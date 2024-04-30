@@ -1,9 +1,8 @@
- # Définit la version de la syntaxe Docker Compose utilisée.
-version: '3.8'
+# Définit la version de la syntaxe Docker Compose utilisée.
+version: '3'
 
  # Section définissant les services Docker à exécuter.
 services:
-
 # Définit le service PHP.
    php:
    # Utilise l'image Docker PHP 8.2 avec Apache.
@@ -68,7 +67,7 @@ services:
       ports:
       # Mappe le port 8899 de l'hôte au port 80 du conteneur.
          - 8899:80
- sonar:
+   sonar:
      image: sonarqube:latest
      container_name: serveurSonar
      ports:
