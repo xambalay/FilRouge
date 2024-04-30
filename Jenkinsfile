@@ -2,6 +2,11 @@ pipeline {
     agent any
 
     stages {
+        stage('Récupération du code') {
+            steps {
+                git branch: 'main', credentialsId: 'kha845', url: 'git@github.com:votre-nom-dutilisateur/votre-dépôt.git'
+            }
+        }
         stage('Build') {
             
             steps {
