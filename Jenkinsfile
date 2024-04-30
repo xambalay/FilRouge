@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Récupération du code') {
+        stage('git clone') {
             steps {
                 git branch: 'main', credentialsId: 'kha845', url: 'https://github.com/Kha845/projet-fil-rouge.git'
             }
