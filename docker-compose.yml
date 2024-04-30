@@ -12,7 +12,7 @@ services:
     container_name: php82
     # Configure les ports du conteneur.Mappe le port 8080 de l'hôte au port 80 du conteneur.
     ports:
-      - 8080:80
+      - 9090:80
     # Montre les volumes du conteneur.  
     volumes:
     #Montre le répertoire local 'projectProfil' au répertoire '/var/www/html' dans le conteneur.
@@ -33,6 +33,10 @@ services:
       #Elle configure le plugin d'authentification par défaut sur "mysql_native_password". 
       #Ce plugin est utilisé pour l'authentification des utilisateurs lors de la connexion à la base de données MySQL.
       command: --default-authentication-plugin=mysql_native_password
+      volumes:
+# Montre le fichier SQL local au répertoire d'initialisation de la base de données du conteneur.
+         - ./projectProfil/profil_infos.sql:/docker-entrypointinitdb.d/profil_infos.sql
+
       environment: 
          MYSQL_ROOT_PASSWORD: pass
           # Nom de la base de données.
