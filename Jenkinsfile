@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Récupération du code') {
             steps {
-                git branch: 'main', credentialsId: 'kha845', url: 'git@github.com:votre-nom-dutilisateur/votre-dépôt.git'
+                git branch: 'main', credentialsId: 'kha845', url: 'https://github.com/Kha845/projet-fil-rouge.git'
             }
         }
         stage('Build') {
