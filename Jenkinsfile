@@ -2,13 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('git clone') {
-            steps {
-                git branch: 'main', credentialsId: 'kha845', url: 'https://github.com/Kha845/projet-fil-rouge.git'
-            }
-        }
         stage('Build') {
-            
             steps {
                 // Étape de construction de l'image Docker
                 script {
