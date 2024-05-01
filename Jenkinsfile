@@ -38,5 +38,5 @@ def dockerComposeBuild() {
 
 def deployWithDockerCompose() {
     // Commande pour démarrer les conteneurs avec Docker Compose
-    sh 'docker-compose up -d'
+    sh 'docker-compose up '
 }
