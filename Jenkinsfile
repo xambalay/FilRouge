@@ -2,6 +2,14 @@ pipeline {
     agent any
 
     stages {
+         stage('Supprimer') {
+            steps {
+                // Étape suppression
+                script {
+                    downWithDockerCompose() 
+                }
+            }
+        }
         stage('Build') {
             steps {
                 // Étape de construction de l'image Docker
@@ -39,4 +47,10 @@ def dockerComposeBuild() {
 def deployWithDockerCompose() {
     // Commande pour démarrer les conteneurs avec Docker Compose
     sh 'docker-compose up '
+}
+
+
+def downWithDockerCompose() {
+    // Commande pour supprimer les conteneurs avec Docker compose
+    sh 'docker-compose down'
 }
