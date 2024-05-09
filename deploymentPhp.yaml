@@ -1,30 +1,29 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: myphp-deployment
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      env: production-frontend
-  template:
-    metadata:
-      name: myfrontend-pod
-      labels:
-        env: production-frontend
-    spec:
-      volumes:
-        - name: front-vol
-          persistentVolumeClaim:
-            claimName: frontend-pvc
-      containers:
-      - name: frontend
-        image: ragh19/phpproject:web_v1
-        volumeMounts:
-          - mountPath: /var/www/html
-            name: front-vol
-      volumes:
-        - name: front-vol
-          hostPath:
-            path: /c/Users/dell/Documents/projetFilRouge/projectProfil/
-
+apiVersion: apps/v1  # Version de l'API Kubernetes utilisée
+kind: Deployment  # Type de ressource Kubernetes (un déploiement)
+metadata:  # Métadonnées de la ressource
+  name: myphp-deployment  # Nom du déploiement
+spec:  # Spécifications du déploiement
+  replicas: 3  # Nombre de répliques (pods) à maintenir en fonctionnement
+  selector:  # Sélecteur utilisé pour déterminer quels pods sont gérés par ce déploiement
+    matchLabels:  # Correspondance d'étiquettes
+      env: production-frontend  # Sélectionne les pods avec l'étiquette "env" ayant la valeur "production-frontend"
+  template:  # Modèle pour créer de nouveaux pods
+    metadata:  # Métadonnées du pod
+      name: myfrontend-pod  # Nom du pod
+      labels:  # Étiquettes du pod
+        env: production-frontend  # Étiquette "env" avec la valeur "production-frontend"
+    spec:  # Spécifications du pod
+      volumes:  # Définition des volumes pour le pod
+        - name: front-vol  # Nom du volume
+          persistentVolumeClaim:  # Utilisation d'une Persistent Volume Claim (PVC) existante
+            claimName: frontend-pvc  # Nom de la PVC utilisée pour ce volume
+      containers:  # Définition des conteneurs dans le pod
+        - name: frontend  # Nom du conteneur
+          image: ragh19/phpproject:web_v1  # Image Docker utilisée pour le conteneur
+          volumeMounts:  # Montage des volumes dans le conteneur
+            - mountPath: /var/www/html  # Chemin de montage dans le conteneur
+              name: front-vol  # Nom du volume à monter dans ce chemin
+      volumes:  # Définition des volumes
+        - name: front-vol  # Nom du volume
+          hostPath:  # Utilisation d'un chemin sur le nœud hôte
+            path: /c/Users/dell/Documents/projetFilRouge/projectProfil/  # Chemin sur le nœud hôte
