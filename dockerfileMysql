@@ -1,0 +1,8 @@
+# Utilisez l'image officielle MySQL comme point de départ
+FROM ragh19/phpproject:mysql_v1
+
+
+ADD  ./profil_infos.sql /docker-entrypointinitdb.d/profil_infos.sql
+
+
+
