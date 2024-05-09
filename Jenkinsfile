@@ -33,12 +33,12 @@ pipeline {
 
 def dockerComposeBuild() {
     // Commande pour construire les images Docker avec Docker Compose
-    sh 'docker-compose build'
+    bat 'docker-compose build'
 }
 
 def deployWithDockerCompose() {
     // Commande pour démarrer les conteneurs avec Docker Compose
-    sh 'docker-compose up '
+    bat 'docker-compose up '
 }
 
 
