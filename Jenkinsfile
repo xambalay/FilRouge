@@ -1,40 +1,23 @@
 pipeline {
-    agent any
-
-    stages {
-        stage('Build') {
-            steps {
-                // Étape de construction de l'image Docker
-                script {
-                    dockerComposeBuild()
-                }
-            }
-        }
-        stage('Deploy') {
-            steps {
-                // Étape de déploiement avec Docker Compose
-                script {
-                    deployWithDockerCompose()
-                }
-            }
-        }
+  agent any
+  stages {
+    stage ('test') {
+      steps {
+        bat 'docker ps -a'
+      }
     }
-    post {
-        success {
-            // Envoyer une notification par e-mail si le déploiement est réussi
-            emailext (
-                subject: "Déploiement réussi",
-                body: "Le déploiement de l'application a été effectué avec succès.",
-                to: "dkhadidiatou75@email.com",
-            )
-        }
+    stage ('Run Docker Compose') {
+      steps {
+        bat 'docker-compose up  -d'
+      }
     }
+  }
+  post {
+    success {
+      slackSend channel: '#projet', message: 'Code execute'
+    }
+    failure {
+      slackSend channel: '#projet', message: 'Code execute with error'
+    }
+  }
 }
-
-def dockerComposeBuild() {
-    // Commande pour construire les images Docker avec Docker Compose
-    bat 'docker-compose up --build'
-}
-
-
-
