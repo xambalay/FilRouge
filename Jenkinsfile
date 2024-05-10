@@ -11,6 +11,18 @@ pipeline {
         bat 'docker-compose up  -d'
       }
     }
+    stage ('Deploy') {
+      steps {
+        withCredentials([file(credentialsID: 'kubeConfig', variable: 'KUBECONFIG')]) {
+          script {
+              // Déployer sur Kubernetes
+              bat 'kubectl apply -f components.yaml --kubeconfig=${KUBECONFIG} --validate=false '
+              bat 'kubectl apply -f db-deployment.yml --kubeconfig=${KUBECONFIG} --validate=false'
+              bat 'kubectl apply -f web-deployment.yml --kubeconfig=${KUBECONFIG} --validate=false'
+          }
+        }
+      }
+    }
   }
   post {
     success {

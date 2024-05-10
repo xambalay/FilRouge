@@ -26,4 +26,5 @@ spec:  # Spécifications du déploiement
       volumes:  # Définition des volumes
         - name: front-vol  # Nom du volume
           hostPath:  # Utilisation d'un chemin sur le nœud hôte
-            path: /c/Users/dell/Documents/projetFilRouge/projectProfil/  # Chemin sur le nœud hôte
+            path: /c/xampp/htdocs/projetFilRouge  # Chemin sur le nœud hôte
+      
