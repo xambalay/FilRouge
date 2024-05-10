@@ -6,11 +6,11 @@ pipeline {
         bat 'docker ps -a'
       }
     }
-    stage ('Run Docker Compose') {
-      steps {
-        bat 'docker-compose up  -d'
-      }
-    }
+    //stage ('Run Docker Compose') {
+    //   steps {
+    //     bat 'docker-compose up  -d'
+    //   }
+    // }
     stage ('Deploy') {
       steps {
         withCredentials([file(credentialsID: 'kubeConfig', variable: 'KUBECONFIG')]) {
