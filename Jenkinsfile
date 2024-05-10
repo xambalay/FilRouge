@@ -13,7 +13,7 @@ pipeline {
     // }
     stage ('Deploy') {
       steps {
-        withCredentials([file(credentialsID: 'kubeConfig', variable: 'KUBECONFIG')]) {
+        withCredentials([file(credentialsId: 'kubeConfig', variable: 'KUBECONFIG')]) {
           script {
               // Déployer sur Kubernetes
               bat 'kubectl apply -f deploymentMysql.yaml --kubeconfig=${KUBECONFIG} --validate=false'
