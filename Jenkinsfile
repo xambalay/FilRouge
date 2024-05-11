@@ -15,8 +15,8 @@ pipeline {
       steps {
         withCredentials([file(credentialsId: 'kubeConfig', variable: 'KUBECONFIG')]) {
           // Déployer sur Kubernetes
-          bat 'kubectl apply -f deploymentMysql.yaml --kubeConfig=%KUBECONFIG% --validate=false'
-          bat 'kubectl apply -f deploymentPhp.yaml --kubeConfig=$%KUBECONFIG% --validate=false'
+          bat 'kubectl create -f deploymentMysql.yaml --kubeConfig=%KUBECONFIG% --validate=false'
+          bat 'kubectl create -f deploymentPhp.yaml --kubeConfig=$%KUBECONFIG% --validate=false'
         }
       }
     }
