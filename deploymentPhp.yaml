@@ -16,7 +16,7 @@ spec:  # Spécifications du déploiement
       volumes:  # Définition des volumes pour le pod
         - name: front-vol  # Nom du volume
           persistentVolumeClaim:  # Utilisation d'une Persistent Volume Claim (PVC) existante
-            claimName: frontend-pvc  # Nom de la PVC utilisée pour ce volume
+            claimName: frontende-pvc  # Nom de la PVC utilisée pour ce volume
       containers:  # Définition des conteneurs dans le pod
         - name: frontend  # Nom du conteneur
           image: ragh19/phpproject:web_v1  # Image Docker utilisée pour le conteneur
