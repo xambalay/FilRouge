@@ -3,7 +3,7 @@ kind: Deployment  # Type de ressource Kubernetes (un déploiement)
 metadata:  # Métadonnées de la ressource
   name: mydb-deployment  # Nom du déploiement
 spec:  # Spécifications du déploiement
-  replicas: 1  # Nombre de répliques (pods) à maintenir en fonctionnement
+  replicas: 5  # Nombre de répliques (pods) à maintenir en fonctionnement
   selector:  # Sélecteur utilisé pour déterminer quels pods sont gérés par ce déploiement
     matchLabels:  # Correspondance d'étiquettes
       env: production-db  # Sélectionne les pods avec l'étiquette "env" ayant la valeur "production-db"
