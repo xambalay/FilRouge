@@ -28,8 +28,8 @@ pipeline {
              withSonarQubeEnv('sonarqube') {// If you have configured more than one global server connection, you can specify its name as configured in Jenkins
                  bat """
                     ${scannerHome}/bin/sonar-scanner \
-                    -Dsonar.projectKey=main \
-                    -Dsonar.projectName="main" \
+                    -Dsonar.projectKey=TestProject \
+                    -Dsonar.projectName="TestProject" \
                     -Dsonar.projectVersion=1.0 \
                     -Dsonar.sources=.
                     """
