@@ -18,24 +18,23 @@ pipeline {
           sh 'sudo kubectl apply -f servicePhp.yaml --kubeconfig=${KUBECONFIG} --validate=false'
         }
       }
+    }
     stage('SonarQube analysis') {
           steps {
               script{
-                   scannerHome = tool 'sonar-scanner'
+                   scannerHome = tool 'sonarscanner'
               }
              
              withSonarQubeEnv('sonarqube') {// If you have configured more than one global server connection, you can specify its name as configured in Jenkins
                  bat """
                     ${scannerHome}/bin/sonar-scanner \
-                    -Dsonar.projectKey=main \
-                    -Dsonar.projectName="main" \
+                    -Dsonar.projectKey=demosonarqube \
+                    -Dsonar.projectName="demosonarqube" \
                     -Dsonar.projectVersion=1.0 \
                     -Dsonar.sources=.
                     """
                }
             }
-         }
-    }
   }
   //post {
     //success {
