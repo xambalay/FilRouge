@@ -25,7 +25,7 @@ pipeline {
                    scannerHome = tool 'sonar-scanner'
               }
              
-             withSonarQubeEnv('sonarqube') {// If you have configured more than one global server connection, you can specify its name as configured in Jenkins
+             withSonarQubeEnv('sonar') {// If you have configured more than one global server connection, you can specify its name as configured in Jenkins
                  bat """
                     ${scannerHome}/bin/sonar-scanner \
                     -Dsonar.projectKey=TestProject \
