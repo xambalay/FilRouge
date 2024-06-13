@@ -11,7 +11,6 @@ pipeline {
               script{
                    scannerHome = tool 'sonar-scanner'
               }
-             
              withSonarQubeEnv('sonar') {// If you have configured more than one global server connection, you can specify its name as configured in Jenkins
                  sh """
                     ${scannerHome}/bin/sonar-scanner \
@@ -24,23 +23,10 @@ pipeline {
           }
     }
     stage('Quality Gate') {
-      steps {
-        script {
-            def qg = waitForQualityGate()
-            if (qg.status != 'OK') {
-                echo "Pipeline avorté : ${qg.status}"
-                exit 1
-            } else {
-                echo "Porte de qualité passée avec succès : ${qg.status}"
+            steps {
+                waitForQualityGate abortPipeline: true
             }
-        }
     }
-}
-    //stage('Quality Gate') {
-      //      steps {
-        //        waitForQualityGate abortPipeline: true
-          //  }
-    //}
     stage ('Deploy') {
       steps {
         withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG')]) {
