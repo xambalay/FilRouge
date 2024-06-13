@@ -44,4 +44,3 @@ pipeline {
       //slackSend channel: '#projet', message: 'Code execute with error'
     //}
   //}
-}
