@@ -22,7 +22,7 @@ pipeline {
     stage('SonarQube analysis') {
           steps {
               script{
-                   scannerHome = tool 'sonarscanner'
+                   scannerHome = tool 'sonar-scanner'
               }
              
              withSonarQubeEnv('sonarqube') {// If you have configured more than one global server connection, you can specify its name as configured in Jenkins
@@ -33,14 +33,16 @@ pipeline {
                     -Dsonar.projectVersion=1.0 \
                     -Dsonar.sources=.
                     """
+             }
           }
-     }
-  }
+    }
   //post {
     //success {
-      //slackSend channel: '#projet', message: 'Code execute'
+      //slackSend channel: '#projet', message: 'Code execute'ù
     //}
     //failure {
       //slackSend channel: '#projet', message: 'Code execute with error'
     //}
   //}
+  }
+}
